@@ -86,7 +86,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
-                        <?php $populair= \App\Product::latest()->->paginate(6) ?>
+                        <?php $populair= \App\Product::latest()->paginate(6) ?>
                         @foreach ($populair as $product)
                         <div class="single-product-wrapper">
                             <div class="product-img">
