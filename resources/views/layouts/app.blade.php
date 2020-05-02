@@ -6,7 +6,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'CakeStyle') }}</title>
+    <title>{{ __('CakeStyle') }}</title>
 
 
 
