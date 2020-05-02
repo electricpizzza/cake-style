@@ -19,7 +19,7 @@ class CreateProductDetailsTable extends Migration
             $table->index('product_id');
 
             $table->unsignedBigInteger('cart_item_id')->nullable();
-            $table->index('cart_items_id')->nullable();
+            $table->index('cart_item_id')->nullable();
 
             $table->unsignedBigInteger('order_item_id')->nullable();
             $table->index('order_item_id')->nullable();
