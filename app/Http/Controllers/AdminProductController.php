@@ -49,13 +49,14 @@ class AdminProductController extends Controller
 
     public function create()
     {   
+        dd(request()->all());
         $data = request()->validate([
             "title" => "required|string",
             "category" => "required|string",
             "sexe" => "required|string",
             "price" => "required|numeric",
             "quantity" => "required|int",
-            //"tag" => "string",
+            "tag" => "string",
             "brand" => "required|string",
             "size" => "required",
             "color" => "required",
@@ -67,7 +68,7 @@ class AdminProductController extends Controller
             "image3" => "image",
         ]);
         
-        dd($data);
+        
         $tags = explode(",",$data["tag"]);
 
         $product = Product::create([
