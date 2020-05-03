@@ -105,8 +105,7 @@ class AdminProductController extends Controller
             ]);
         }
 
-        $image1 = request()->file("image1")->move('/img/product-img');
-        //->store("productimg","public");
+        $image1 = request("image1")->store("productimg","public");
             $product->images()->create([
                 "image"=>$image1
             ]);
