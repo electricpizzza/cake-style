@@ -135,7 +135,7 @@ class AdminProductController extends Controller
              "sexe" => "required|string",
              "price" => "required|numeric",
              "quantity" => "required|int",
-             "tag" => "",
+             //"tag" => "",
              "brand" => "required|string",
              "size" => "",
              "color" => "",
