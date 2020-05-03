@@ -62,7 +62,7 @@ class AdminProductController extends Controller
             "description" => "string",
             "showen_as" => "required",
             "sale" => "required|int",
-            // "image1" => "required|image",
+            "image1" => "required",
             // "image2" => "image",
             // "image3" => "image",
         ]);
