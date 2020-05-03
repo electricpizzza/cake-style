@@ -13,12 +13,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
-        User::create([
+        $user =  User::create([
             'first_name' => 'zakariae',
             'last_name' => 'dinar',
             'email' => 'dinar@mail.com',
             'roll' => 'admin',
             'password' => Hash::make('salamsalam'),
+        ]);
+        $user->address()->create([
+            'country' => 'Morocco',
+            'city' => 'Fes',
         ]);
     }
 }
