@@ -129,7 +129,7 @@
                 ?>
                 <div class="single-cart-item" id="{{'cartitem'.$item->id}}">
                     <div class="product-image">
-                        <img src="/storage/{{$item->detail->product->images()->first()->image}}" class="cart-thumb" alt="">
+                        <img src="{{$item->detail->product->images()->first()->image}}" class="cart-thumb" alt="">
                         <div class="cart-item-desc">
                             <span class="product-remove btn" onclick="removefromcart({{$item->id}})"><i class="fa fa-close" aria-hidden="true"></i></span>
                             <span class="badge">{{$item->detail->product->brand}}</span>
