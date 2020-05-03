@@ -105,22 +105,19 @@ class AdminProductController extends Controller
             ]);
         }
 
-        $image1 = $data->file("image1")->move('/public');
-        //store("productimg","public");
-
+        $image1 = request()->file("image1")->move('../public/img');
+        //->store("productimg","public");
             $product->images()->create([
                 "image"=>$image1
             ]);
         if(request("image2")!=null){ 
-            $image2 = $data->file("image2")->move('/public');
-            //store("productimg","public");
+            $image2 = request("image2")->store("productimg","public");
             $product->images()->create([
                 "image"=>$image2
             ]);
         }
         if(request("image3")!=null){
-        $image3 = $data->file("image3")->move('/public');
-        //store("productimg","public");
+        $image3 = request("image3")->store("productimg","public");
             $product->images()->create([
                 "image"=>$image3
             ]);
