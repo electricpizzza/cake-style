@@ -105,19 +105,22 @@ class AdminProductController extends Controller
             ]);
         }
 
-        $image1 = request("image1")->store("productimg","public");
+        $image1 = request("image1")->move(base_path().'/public/img');
+        //store("productimg","public");
 
             $product->images()->create([
                 "image"=>$image1
             ]);
         if(request("image2")!=null){ 
-            $image2 = request("image2")->store("productimg","public");
+            $image2 = request("image2")->move(base_path().'/public/img');
+            //store("productimg","public");
             $product->images()->create([
                 "image"=>$image2
             ]);
         }
         if(request("image3")!=null){
-        $image3 = request("image3")->store("productimg","public");
+        $image3 = request("image3")->move(base_path().'/public/img');
+        //store("productimg","public");
             $product->images()->create([
                 "image"=>$image3
             ]);
@@ -134,16 +137,16 @@ class AdminProductController extends Controller
              "sexe" => "required|string",
              "price" => "required|numeric",
              "quantity" => "required|int",
-             //"tag" => "",
+             "tag" => "",
              "brand" => "required|string",
              "size" => "",
              "color" => "",
              "showen_as" => "required|string",
              "sale" => "required|int",
              "description" => "string",
-             "image1" => "image",
-             "image2" => "image",
-             "image3" => "image",
+             "image1" => "",
+             "image2" => "",
+             "image3" => "",
         ]);
         $tags = explode(",",$data["tag"]);
 
