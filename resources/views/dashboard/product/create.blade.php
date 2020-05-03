@@ -175,7 +175,7 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="size">Size</label>
-                        <select class="form-control selectpicker" multiple type="text" id="size" name="size[]" value="{{ old('size') }}"  required placeholder="Size">
+                        <select class="form-control selectpicker" multiple type="text" id="size" name="size[]" value="{{ old('size[]') }}"  required placeholder="Size">
                           <option value="S">S</option>
                           <option value="M">M</option>
                           <option value="L">L</option>
@@ -192,7 +192,7 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="">Color</label>
-                        <select class="form-control selectpicker" multiple type="text" id="color" name="color[]" value="{{ old('color') }}"  required placeholder="Color">
+                        <select class="form-control selectpicker" multiple type="text" id="color" name="color[]" value="{{ old('color[]') }}"  required placeholder="Color">
                         <option value="BLACK">BLACK</option>
                         <option value="WHITE">WHITE</option>
                         <option value="RED">RED</option>
