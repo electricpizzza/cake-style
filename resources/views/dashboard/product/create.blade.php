@@ -150,7 +150,7 @@
                         <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
                         <input type="file" name="image3" id="image3" class="upload-input btn" />
                     </div>
-                    @error('image1')
+                    @error('image3')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
