@@ -55,7 +55,7 @@ class AdminProductController extends Controller
             "sexe" => "required|string",
             "price" => "required|numeric",
             "quantity" => "required|int",
-            "tag" => "string",
+            //"tag" => "string",
             "brand" => "required|string",
             "size" => "required",
             "color" => "required",
@@ -67,6 +67,7 @@ class AdminProductController extends Controller
             "image3" => "image",
         ]);
         
+        dd($data);
         $tags = explode(",",$data["tag"]);
 
         $product = Product::create([
