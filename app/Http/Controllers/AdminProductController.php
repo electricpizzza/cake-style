@@ -128,7 +128,7 @@ class AdminProductController extends Controller
 
     public function update(Product $product)
     {
-        dd(request()->all());
+        $data = request()->all();
 /*
         $data = request()->validate([
              "title" => "required|string",
@@ -147,6 +147,7 @@ class AdminProductController extends Controller
              "image2" => "image",
              "image3" => "image",
         ]);
+        */
         $tags = explode(",",$data["tag"]);
 
         $product->update([
@@ -201,7 +202,6 @@ class AdminProductController extends Controller
         
     }
     return redirect('products');
-    */
     }
     
 }
