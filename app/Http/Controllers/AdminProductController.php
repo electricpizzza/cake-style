@@ -128,6 +128,7 @@ class AdminProductController extends Controller
 
     public function update(Product $product)
     {
+        dd(request()->all());
         $data = request()->validate([
              "title" => "required|string",
              "category" => "required|string",
