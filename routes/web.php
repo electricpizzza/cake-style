@@ -32,6 +32,15 @@ Route::get('/dashboard/profile', 'AdminController@index')->name('admin.show');
 
 Route::patch('/admin','AdminController@update')->name('admin.update');
 
+Route::post('/productscreate', 'AdminProductController@create');
+Route::patch('/products/{product}', 'AdminProductController@update');
+Route::patch('/remove/{product}', function (Product $product) {
+    $product->update([
+        'showen_as'=>'hiden',
+    ]);
+    return redirect('/products');
+});
+
 Route::get('/products', 'AdminProductController@index');
 Route::get('/orders/pended', 'AdminProductController@pended');
 Route::get('/orders', 'AdminProductController@orders');
@@ -40,18 +49,6 @@ Route::patch('/orderstatus/{order}','AdminProductController@orderedit' );
 Route::get('/products/add','AdminProductController@add' );
 Route::get('/products/{product}','AdminProductController@edit' );
 
-
-
-Route::post('/productscreate', 'AdminProductController@create');
-Route::patch('/products/{product}', 'AdminProductController@update');
-Route::patch('/remove/{product}', function (Product $product) {
-
-    $product->update([
-        'showen_as'=>'hiden',
-    ]);
-    return redirect('/products');
-
-});
 });
 
 //---Shop routes---//
