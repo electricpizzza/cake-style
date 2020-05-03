@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="POST" action="/products" enctype="multipart/form-data">
+<form method="POST" action="/productscreate" enctype="multipart/form-data">
     @csrf 
   <div class="header pb-6 d-flex align-items-center" style="min-height: 100px; background-image: url(/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->

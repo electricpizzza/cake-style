@@ -42,7 +42,7 @@ Route::get('/products/{product}','AdminProductController@edit' );
 
 
 
-Route::post('/products', 'AdminProductController@create');
+Route::post('/productscreate', 'AdminProductController@create');
 Route::patch('/products/{product}', 'AdminProductController@update');
 Route::patch('/remove/{product}', function (Product $product) {
 

@@ -128,9 +128,7 @@ class AdminProductController extends Controller
 
     public function update(Product $product)
     {
-
-        $data =request()->all();
-        /*= request()->validate([
+        $data = request()->validate([
              "title" => "required|string",
              "category" => "required|string",
              "sexe" => "required|string",
@@ -147,7 +145,6 @@ class AdminProductController extends Controller
              "image2" => "image",
              "image3" => "image",
         ]);
-        */
         $tags = explode(",",$data["tag"]);
 
         $product->update([
