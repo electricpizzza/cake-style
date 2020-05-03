@@ -63,11 +63,10 @@ class AdminProductController extends Controller
             "showen_as" => "required",
             "sale" => "required|int",
             "image1" => "required",
-            // "image2" => "image",
-            // "image3" => "image",
+            "image2" => "",
+            "image3" => "",
         ]);
         
-        dd($data);
         $tags = explode(",",$data["tag"]);
 
         $product = Product::create([
