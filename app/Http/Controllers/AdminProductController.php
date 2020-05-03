@@ -57,14 +57,14 @@ class AdminProductController extends Controller
             "quantity" => "required|int",
             "tag" => "string",
             "brand" => "required|string",
-            //"size" => "required",
-            // "color" => "required",
+            "size" => "required",
+            "color" => "required",
             "description" => "string",
             "showen_as" => "required",
             "sale" => "required|int",
-            "image1" => "required|image",
-            "image2" => "image",
-            "image3" => "image",
+            // "image1" => "required|image",
+            // "image2" => "image",
+            // "image3" => "image",
         ]);
         
         dd($data);
