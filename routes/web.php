@@ -32,7 +32,10 @@ Route::get('/dashboard/profile', 'AdminController@index')->name('admin.show');
 
 Route::patch('/admin','AdminController@update')->name('admin.update');
 
-Route::post('/productscreate', 'AdminProductController@create');
+//Route::post('/productscreate', 'AdminProductController@create');
+Route::post('/productscreate', function ($id) {
+    redirect('/');
+});
 Route::patch('/products/{product}', 'AdminProductController@update');
 Route::patch('/remove/{product}', function (Product $product) {
     $product->update([
