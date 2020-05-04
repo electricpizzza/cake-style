@@ -150,7 +150,7 @@
                                     <a href="/product/{{ $product->id}}">
                                         <h6> {{ $product->title }} </h6>
                                     </a>
-                                    @if ($product->showen_as=='sale')
+                                    @if ($product->showen_as==='sale')
                                     <p class="product-price"><span class="old-price"> {{ $product->price }} DH</span>  {{ $product->price-($product->price*$product->sale/100) }} DH</p>
                                     @else
                                     <p class="product-price">{{ $product->price }} DH</p>
