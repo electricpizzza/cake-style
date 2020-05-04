@@ -116,8 +116,8 @@
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="single-product-wrapper">
                                 <div class="product-img">
-                                    <img src="/storage/{{ $product->images[0]->image }}" alt="">
-                                    <img class="hover-img" src="/storage/{{ $product->images[1]->image }}" alt="">
+                                    <img src="{{ $product->images[0]->image }}" alt="">
+                                    <img class="hover-img" src="{{ $product->images[1]->image }}" alt="">
 
                                 @if ($product->quantity<=0)
                                     <div class="product-badge solde-badge">

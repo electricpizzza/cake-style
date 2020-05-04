@@ -91,7 +91,7 @@
                         <div class="single-product-wrapper">
                             <div class="product-img">
                                 <img src="/{{ $product->images[0]->image }}" alt="">
-                                <img class="hover-img" src="/{{ $product->images[2]->image }}" alt="">
+                                <img class="hover-img" src="{{ $product->images[2]->image }}" alt="">
                             
                                 @if ($product->quantity<=0)
                                     <div class="product-badge solde-badge">
