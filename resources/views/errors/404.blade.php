@@ -16,7 +16,7 @@
     <div class='container'>
         <div class='row justify-content-center'>
             <div class='col-12 col-md-8'>
-                <div class='regular-page-content-wrapper section-padding-80'>
+                <div class='regular-page-content-wrapper section-padding-80 d-flex flex-column justify-content-center'>
                     <div class='regular-page-text'>
                         <h2>What you are looking for is not available.</h2>
                         <blockquote>
