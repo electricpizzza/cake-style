@@ -85,8 +85,8 @@ Route::post('/favourite/add/{id}', function ($id) {
 Route::get('/{sexe}/{category}', 'StoreController@index')->name('shop.show');
 Route::get('/sales', function () {
     $products = Product::where('showen_as','sale')->get();
-    $category = 'Sales';
-    return view('shop.shop',compact('products','category'));
+    $category = 'Sales'; $sexe = 'w';
+    return view('shop.shop',compact('products','category','sexe'));
 });
 Route::get('/about', 'StoreController@about');
 Route::get('/contact', 'StoreController@contact');
