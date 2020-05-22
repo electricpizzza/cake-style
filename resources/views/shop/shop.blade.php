@@ -155,10 +155,9 @@
                                     @else
                                     <p class="product-price">{{ $product->price }} DH</p>
                                     @endif
-
                                     <div class="hover-content">
                                         <div class="add-to-cart-btn">
-                                            <a href="/product/{{$product->id}}" class="btn essence-btn">Add to Cart</a>
+                                            <a href="#" onclick="addToCart({{$product->id}})" class="btn essence-btn">Add to Cart</a>
                                         </div>
                                     </div>
                                 </div>

@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/api/product/id', function ($id) {
+    $product = \App\Product::find($id);
+    return  response()->json($product,202);
+});

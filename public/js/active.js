@@ -181,3 +181,15 @@ function addToFav (itemId) {
         }
     });
  }
+
+
+ function addToCart(id) { 
+    const localCart =  localStorage['cart'];
+    let cart = [localCart];
+    cart.push(id) ;
+    localStorage['cart'] = cart;
+   // $("#cartcount").html(parseInt($("#cartcount").html())+1);
+
+  }
+ 
+ 

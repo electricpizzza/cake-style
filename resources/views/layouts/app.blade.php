@@ -184,7 +184,7 @@
                 </div>
             </div>
             @else
-            <div class="cart-list">
+            <div class="cart-list" id="gestCart">
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
                         <img src="/img/product-img/cart.jpg" class="cart-thumb" alt="">
@@ -296,6 +296,38 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
+@guest
+<script>
+     function getProd(id) { 
+      return ["{{\App\Product::find(1)}}","{{\App\Product::find(1)->detail}}"];
+   }
+    const localCart = localStorage['cart'].split(`,`);
+    $("#gestCart").children().remove();
+    
+    localCart.forEach(element => {        
+        let product = JSON.parse(getProd(1)[0].replace(/&quot;/g,`"`));
+        let detail = JSON.parse(getProd(1)[1].replace(/&quot;/g,`"`));
+        const cartitem = ` <div class="single-cart-item" id="">
+                    <div class="product-image">
+                        <img src="" class="cart-thumb" alt="">
+                        <div class="cart-item-desc">
+                            <span class="product-remove btn" onclick="removefromcart(${element})"><i class="fa fa-close" aria-hidden="true"></i></span>
+                            <span class="badge">${product.brand}</span>
+                            <a href="/product/${product.id}"> <h6>${product.title}</h6></a>
+                            <p class="size">Size: ${detail.size}</p>
+                            <p class="color">Color: ${detail.color}</p>
+                            <p class="price">${product.price} DHs</p>
+                        </div>
+                    </div>
+                </div>`;
+        if (element!='') 
+        $("#gestCart").append(cartitem);
+    });
+    
+    
+
+</script> 
+@endguest
 
 </body>
 </html>
