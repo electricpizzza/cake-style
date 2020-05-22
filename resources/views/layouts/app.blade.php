@@ -299,7 +299,7 @@
 @guest
 <script>
      function getProd(id) { 
-      return ["{{\App\Product::find(1)}}","{{\App\Product::find(1)->detail}}"];
+      return ["{{\App\Product::find(1)}}","{{\App\Product::find(1)->detail}}","{{\App\Product::find(1)->images->first()}}"];
    }
     const localCart = localStorage['cart'].split(`,`);
     $("#gestCart").children().remove();
@@ -307,9 +307,11 @@
     localCart.forEach(element => {        
         let product = JSON.parse(getProd(1)[0].replace(/&quot;/g,`"`));
         let detail = JSON.parse(getProd(1)[1].replace(/&quot;/g,`"`));
+        let image = JSON.parse(getProd(1)[2].replace(/&quot;/g,`"`));
+
         const cartitem = ` <div class="single-cart-item" id="">
                     <div class="product-image">
-                        <img src="" class="cart-thumb" alt="">
+                        <img src="${image.image}" class="cart-thumb" alt="">
                         <div class="cart-item-desc">
                             <span class="product-remove btn" onclick="removefromcart(${element})"><i class="fa fa-close" aria-hidden="true"></i></span>
                             <span class="badge">${product.brand}</span>
