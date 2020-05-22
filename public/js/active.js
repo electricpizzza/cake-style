@@ -188,7 +188,39 @@ function addToFav (itemId) {
     let cart = [localCart];
     cart.push(id) ;
     localStorage['cart'] = cart;
-   // $("#cartcount").html(parseInt($("#cartcount").html())+1);
+    $("#cartcount").html(parseInt($("#cartcount").html())+1);
+   $("#gestCart").children().remove();
+
+   for (let index = 1; index < cart.length; index++) {
+    const element = cart[index];
+    
+    }   
+
+   cart.forEach(element => {        
+     
+    let product = JSON.parse(getProd(1)[0].replace(/&quot;/g,`"`));
+    let detail = JSON.parse(getProd(1)[1].replace(/&quot;/g,`"`));
+    let image = JSON.parse(getProd(1)[2].replace(/&quot;/g,`"`));
+
+    const cartitem = ` <div class="single-cart-item" id="">
+                <div class="product-image">
+                    <img src="${image.image}" class="cart-thumb" alt="">
+                    <div class="cart-item-desc">
+                        <span class="product-remove btn" onclick="removefromcart(${element})"><i class="fa fa-close" aria-hidden="true"></i></span>
+                        <span class="badge">${product.brand}</span>
+                        <a href="/product/${product.id}"> <h6>${product.title}</h6></a>
+                        <p class="size">Size: ${detail.size}</p>
+                        <p class="color">Color: ${detail.color}</p>
+                        <p class="price">${product.price} DHs</p>
+                    </div>
+                </div>
+            </div>`;
+    console.log(element.toString());
+
+    if (element!='') 
+    
+    $("#gestCart").append(cartitem);
+});
 
   }
  
