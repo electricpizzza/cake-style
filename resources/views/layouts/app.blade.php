@@ -301,24 +301,25 @@
      function getProd(id) { 
       return ["{{\App\Product::find(1)}}","{{\App\Product::find(1)->detail}}","{{\App\Product::find(1)->images->first()}}"];
    }
-    const localCart = localStorage['cart'].split(`,`);
+
+   console.log(JSON.parse(localStorage['productsInCart']));
+   
+    const localCart = JSON.parse(localStorage['productsInCart']);
     $("#gestCart").children().remove();
     
-    localCart.forEach(element => {        
-        let product = JSON.parse(getProd(1)[0].replace(/&quot;/g,`"`));
-        let detail = JSON.parse(getProd(1)[1].replace(/&quot;/g,`"`));
-        let image = JSON.parse(getProd(1)[2].replace(/&quot;/g,`"`));
-
+    localCart.items.forEach(element => {        
+        console.log(element.title);
+        
         const cartitem = ` <div class="single-cart-item" id="">
                     <div class="product-image">
-                        <img src="${image.image}" class="cart-thumb" alt="">
+                        <img src="${element.image}" class="cart-thumb" alt="">
                         <div class="cart-item-desc">
-                            <span class="product-remove btn" onclick="removefromcart(${element})"><i class="fa fa-close" aria-hidden="true"></i></span>
-                            <span class="badge">${product.brand}</span>
-                            <a href="/product/${product.id}"> <h6>${product.title}</h6></a>
-                            <p class="size">Size: ${detail.size}</p>
-                            <p class="color">Color: ${detail.color}</p>
-                            <p class="price">${product.price} DHs</p>
+                            <span class="product-remove btn" onclick="removefromcart(${element.id})"><i class="fa fa-close" aria-hidden="true"></i></span>
+                            <span class="badge">${element.brand}</span>
+                            <a href="/product/${element.id}"> <h6>${element.title}</h6></a>
+                            <p class="size">Size: NaN</p>
+                            <p class="color">Color: NaN</p>
+                            <p class="price">${element.price} DHs</p>
                         </div>
                     </div>
                 </div>`;
