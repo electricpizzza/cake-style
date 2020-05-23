@@ -93,11 +93,11 @@
                 </div>
                 @auth
                 <div class="cart-area">
-                    <a href="#" id="essenceCartBtn"><img src="/img/core-img/bag.svg" alt=""> <span id="cartcount">{{auth()->user()->cartitems()->count()??''}}</span></a>
+                    <a href="#" id="essenceCartBtn"><img src="/img/core-img/bag.svg" alt=""> <span id="cartcount"></span><span>{{auth()->user()->cartitems()->count()??''}}</span></a>
                 </div>
                 @else
                 <div class="cart-area">
-                    <a href="#" id="essenceCartBtn"><img src="/img/core-img/bag.svg" alt=""> <span></span></a>
+                    <a href="#" id="essenceCartBtn"><img src="/img/core-img/bag.svg" alt=""> <span id="getscartcount"></span></a>
                 </div>
                 @endauth
 
@@ -114,7 +114,7 @@
             @auth
             <a href="#" id="rightSideCart"><img src="/img/core-img/bag.svg" alt=""> <span id="cartcount">{{auth()->user()->cartitems()->count()??''}}</span></a>
             @else
-            <a href="#" id="rightSideCart"><img src="/img/core-img/bag.svg" alt=""> <span></span></a>
+            <a href="#" id="rightSideCart"><img src="/img/core-img/bag.svg" alt=""> <span id="getscartcount"></span></a>
             @endauth
         </div>
 
@@ -301,16 +301,41 @@
      function getProd(id) { 
       return ["{{\App\Product::find(1)}}","{{\App\Product::find(1)->detail}}","{{\App\Product::find(1)->images->first()}}"];
    }
+   function removefromcart(id) {
+    let cart = JSON.parse(localStorage['productsInCart']);
+    $(`#cartitem${id}`).remove();
+        for (let index = 0; index < cart.items.length; index++) {
+            const element = cart.items[index];
+            if (element.id==id) {
+                 cart.items.splice(index,index+1);
+            }
+        }
 
-   console.log(JSON.parse(localStorage['productsInCart']));
-   
+        $("#getscartcount").each(function (index, element) {
+        $(this).html(cart.items.length);
+        });
+        localStorage.setItem('productsInCart', JSON.stringify(cart));
+        if (cart.items.length==0) {
+        localStorage.removeItem('productsInCart');
+        $("#gestCart").children().remove();
+        $("#getscartcount").each(function (index, element) {
+        $(this).html("");
+        });
+         }   
+     }
+
+     $(function () {
     const localCart = JSON.parse(localStorage['productsInCart']);
+
+    $("#getscartcount").each(function (index, element) {
+        $(this).html(localCart.items.length);
+        });
     $("#gestCart").children().remove();
-    
+    if (localCart.items.length==0) {
+        localStorage.removeItem('productsInCart');
+    }    
     localCart.items.forEach(element => {        
-        console.log(element.title);
-        
-        const cartitem = ` <div class="single-cart-item" id="">
+        const cartitem = ` <div class="single-cart-item" id="cartitem${element.id}">
                     <div class="product-image">
                         <img src="${element.image}" class="cart-thumb" alt="">
                         <div class="cart-item-desc">
@@ -326,9 +351,8 @@
         if (element!='') 
         $("#gestCart").append(cartitem);
     });
-    
-    
-
+     });
+     
 </script> 
 @endguest
 

@@ -215,17 +215,15 @@ function addToFav (itemId) {
 
         localStorage.setItem('productsInCart', JSON.stringify(cartItems));
 
-    
-    //localStorage.setItem("cartItem",JSON.stringify(item));
-   // localStorage.setItem("cartItem", cartItem+","+JSON.stringify(item));
-
-    $("#cartcount").html(parseInt($("#cartcount").html())+1);
+    $("#getscartcount").each(function (index, element) {
+        $(this).html(cartItems.items.length);
+    });
     
 
    
 
 
-    const cartitem = ` <div class="single-cart-item" id="">
+    const cartitem = ` <div class="single-cart-item" id="cartitem${id}">
                 <div class="product-image">
                     <img src="${image.image}" class="cart-thumb" alt="">
                     <div class="cart-item-desc">
