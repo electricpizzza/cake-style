@@ -26,7 +26,7 @@
     <header class="header_area">
         <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
             <nav class="classy-navbar" id="essenceNav">
-                <a class="nav-brand mt-4" href="/"><img width="170px" src="/img/brand/brand1.png" alt=""></a>
+                <a class="nav-brand mt-4 md-col-12" href="/"><img width="150hw" src="/img/brand/brand1.png" alt=""></a>
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
                 </div>

@@ -41,7 +41,11 @@
                 @if ($product->quantity<=0)
                 <button disabled name="addtocart" value="5" class="btn essence-btn">Sold Out</button>
                 @else
-                <button onclick="addToCart({{$product->id}})" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
+                <button 
+                @auth
+                    type="submit"
+                @endauth
+                onclick="addToCart({{$product->id}})" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
                 @endif
                 <div class="product-favourite ml-4">
                     <a href="#" class="favme fa fa-heart"></a>
