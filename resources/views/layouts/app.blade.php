@@ -323,6 +323,66 @@
         });
          }   
      }
+     function addToCart(id) { 
+
+let product = JSON.parse(getProd(1)[0].replace(/&quot;/g,`"`));
+let detail = JSON.parse(getProd(1)[1].replace(/&quot;/g,`"`));
+let image = JSON.parse(getProd(1)[2].replace(/&quot;/g,`"`));
+
+var items = {
+    "id": id ,
+    "image":image.image,
+    "brand":product.brand,
+    "title":product.title,
+    "price":product.price
+};
+if (localStorage.getItem("productsInCart") === null) {
+    var cartItems = {};
+    var items = [{
+        "id": id ,
+        "image":image.image,
+        "brand":product.brand,
+        "title":product.title,
+        "price":product.price
+    }];
+    cartItems.items=items;
+    $("#gestCart").children().remove();
+    }
+    else{
+    var cartItems = JSON.parse(localStorage.getItem("productsInCart"));
+    cartItems.items.push(items);
+    }
+
+    localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+
+$("#getscartcount").each(function (index, element) {
+    $(this).html(cartItems.items.length);
+});
+
+
+
+
+
+const cartitem = ` <div class="single-cart-item" id="cartitem${id}">
+            <div class="product-image">
+                <img src="${image.image}" class="cart-thumb" alt="">
+                <div class="cart-item-desc">
+                    <span class="product-remove btn" onclick="removefromcart(${id})"><i class="fa fa-close" aria-hidden="true"></i></span>
+                    <span class="badge">${product.brand}</span>
+                    <a href="/product/${product.id}"> <h6>${product.title}</h6></a>
+                    <p class="size">Size: NaN</p>
+                    <p class="color">Color: NaN</p>
+                    <p class="price">${product.price} DHs</p>
+                </div>
+            </div>
+        </div>`;
+
+
+
+$("#gestCart").append(cartitem);
+
+}
+
 
      $(function () {
     const localCart = JSON.parse(localStorage['productsInCart']);

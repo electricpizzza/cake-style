@@ -19,7 +19,10 @@
         </a>
         <p class="product-price"><span class="old-price">{{ $product->price +100}} DH</span> {{ $product->price }} DH</p>
         <p class="product-desc">{{ $product->description }}.</p>
+        @auth
         <form class="cart-form clearfix" action="/cart/{{$product->id}}" method="post">
+        @endauth
+
             @csrf
             <div class="select-box d-flex mt-50 mb-30">
                 <select name="size" id="productSize" class="mr-5">
@@ -38,13 +41,15 @@
                 @if ($product->quantity<=0)
                 <button disabled name="addtocart" value="5" class="btn essence-btn">Sold Out</button>
                 @else
-                <button type="submit" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
+                <button onclick="addToCart({{$product->id}})" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
                 @endif
                 <div class="product-favourite ml-4">
                     <a href="#" class="favme fa fa-heart"></a>
                 </div>
             </div>
+            @auth
         </form>
+        @endauth
     </div>
 </section>
 @endsection
