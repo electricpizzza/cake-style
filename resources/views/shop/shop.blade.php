@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <div class="widget price mb-50">
+                    <div class="widget price mb-50 d-none d-sm-block">
                         <h6 class="widget-title mb-30">Filter by</h6>
                         <p class="widget-title2 mb-30">Price</p>
 
@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <div class="widget brands mb-50">
+                    <div class="widget brands mb-50 d-none d-sm-block">
                         <p class="widget-title2 mb-30">Brands</p>
                         <div class="widget-desc">
                             <ul>
