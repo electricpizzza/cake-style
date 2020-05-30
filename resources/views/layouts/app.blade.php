@@ -26,7 +26,13 @@
     <header class="header_area">
         <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
             <nav class="classy-navbar" id="essenceNav">
-                <a class="nav-brand" href="/"><img width="150hw" src="/img/brand/brand1.png" alt=""></a>
+                <a class="nav-brand mt-md-3" href="/">
+                    <picture>
+                        <source srcset="/img/brand/brand1sml.png" media="(max-width: 750px)">
+                        <source srcset="/img/brand/brand1.png">
+                        <img src="/img/brand/brand1.png" alt="Flowers">
+                      </picture>
+                </a>
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
                 </div>
@@ -298,9 +304,15 @@
 
 @guest
 <script>
-     function getProd(id) { 
-      return ["{{\App\Product::find(1)}}","{{\App\Product::find(1)->detail}}","{{\App\Product::find(1)->images->first()}}"];
-   }
+     function getProd(id) {   
+        return fetch('/productcart/'+id).then(resp=>resp.json()).then(data=>data);
+     }
+     getProd(1).then(da=>{
+         console.log(da);
+         
+     });
+
+   
    function removefromcart(id) {
     let cart = JSON.parse(localStorage['productsInCart']);
     $(`#cartitem${id}`).remove();
@@ -324,12 +336,13 @@
          }   
      }
      function addToCart(id) { 
+        getProd(1).then(data=>{
+            product = data[0];
+            detail = data[1];
+            image = data[2];
+        console.log(product);
 
-let product = JSON.parse(getProd(1)[0].replace(/&quot;/g,`"`));
-let detail = JSON.parse(getProd(1)[1].replace(/&quot;/g,`"`));
-let image = JSON.parse(getProd(1)[2].replace(/&quot;/g,`"`));
-
-var items = {
+        var items = {
     "id": id ,
     "image":image.image,
     "brand":product.brand,
@@ -380,11 +393,12 @@ const cartitem = ` <div class="single-cart-item" id="cartitem${id}">
 
 
 $("#gestCart").append(cartitem);
-
+     });
 }
 
 
      $(function () {
+         
     const localCart = JSON.parse(localStorage['productsInCart']);
 
     $("#getscartcount").each(function (index, element) {

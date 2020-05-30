@@ -58,6 +58,11 @@ Route::patch('/remove/{product}', function (Product $product) {
 
 Route::get('/product/{product}', 'StoreController@detail');
 
+Route::get('/productcart/{id}', function ($id) {
+    $product = Product::findOrFail($id);
+    $resp = [$product,$product->detail,$product->images->first()];
+    return response($resp);
+});
 
 Route::post('/cart/{product}', 'ShopController@addtocart');
 Route::post('/cartremove/{item}', 'ShopController@removefromcart');
