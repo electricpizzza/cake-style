@@ -336,7 +336,7 @@
          }   
      }
      function addToCart(id) { 
-        getProd(1).then(data=>{
+        getProd(id).then(data=>{
             product = data[0];
             detail = data[1];
             image = data[2];
