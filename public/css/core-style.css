@@ -495,11 +495,13 @@ img {
       .right-side-cart-area .cart-content .cart-list .single-cart-item {
         position: relative;
         z-index: 1;
+        min-height: 230px;
         -webkit-transition-duration: 500ms;
         transition-duration: 500ms; }
         .right-side-cart-area .cart-content .cart-list .single-cart-item .product-image {
           position: relative;
           z-index: 1;
+          min-height: 230px;
           display: block; }
           .right-side-cart-area .cart-content .cart-list .single-cart-item .product-image .cart-item-desc {
             position: absolute;

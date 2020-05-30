@@ -340,7 +340,7 @@
             product = data[0];
             detail = data[1];
             image = data[2];
-        console.log(product);
+        console.log(product.price);
 
         var items = {
     "id": id ,
@@ -371,11 +371,6 @@ if (localStorage.getItem("productsInCart") === null) {
 $("#getscartcount").each(function (index, element) {
     $(this).html(cartItems.items.length);
 });
-
-
-
-
-
 const cartitem = ` <div class="single-cart-item" id="cartitem${id}">
             <div class="product-image">
                 <img src="${image.image}" class="cart-thumb" alt="">
@@ -385,7 +380,7 @@ const cartitem = ` <div class="single-cart-item" id="cartitem${id}">
                     <a href="/product/${product.id}"> <h6>${product.title}</h6></a>
                     <p class="size">Size: NaN</p>
                     <p class="color">Color: NaN</p>
-                    <p class="price">${product.price} DHs</p>
+                    <p class="price">${product.price}dd DHs</p>
                 </div>
             </div>
         </div>`;
