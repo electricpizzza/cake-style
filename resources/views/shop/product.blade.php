@@ -44,8 +44,10 @@
                 <button 
                 @auth
                     type="submit"
+                @else
+                onclick="addToCart({{$product->id}})"
                 @endauth
-                onclick="addToCart({{$product->id}})" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
+                name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
                 @endif
                 <div class="product-favourite ml-4">
                     <a href="#" class="favme fa fa-heart"></a>

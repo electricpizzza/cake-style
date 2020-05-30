@@ -197,10 +197,19 @@ function addToFav (itemId) {
       });
     $.ajax({
         type: "post",
-        url: `/cart/${itemId}`,
+        url: `/cart/${id}`,
+        data:{
+            size:  $("#size").val()?$("#size").val():"NaN",
+            color:  $("#color").val()?$("#color").val():"NaN",
+            sexe: $("sexe").val()?$("sexe").val():"NaN" ,
+            product_id:id
+        },
         success: function (response) {
-            console.log("liked : ",response);
-            const cartitem = ` <div class="single-cart-item" id="cartitem${id}">
+            fetch('/productcart/'+id).then(resp=>resp.json()).then(data=>{
+                product = data[0];
+                detail = data[1];
+                image = data[2];
+                const cartitem = ` <div class="single-cart-item" id="cartitem${id}">
             <div class="product-image">
                 <img src="${image.image}" class="cart-thumb" alt="">
                 <div class="cart-item-desc">
@@ -213,10 +222,8 @@ function addToFav (itemId) {
                 </div>
             </div>
         </div>`;
-        $("#gestCart").append(cartitem);
+        $("#gestCart").append(cartitem); 
+            });
         }
     });
  }
-
- 
- 

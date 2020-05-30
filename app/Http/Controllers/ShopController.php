@@ -26,6 +26,7 @@ class ShopController extends Controller
              "sexe"=>$data["sexe"],
              "product_id"=> $product
          ]);
+
          return redirect('product/'.$product);
     }
     public function removefromcart(CartItem $item)

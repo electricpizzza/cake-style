@@ -301,15 +301,24 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
+@auth
+    <script>
+if (localStorage['productsInCart']!=undefined) {
+   const localCart = JSON.parse(localStorage['productsInCart']);
+   $.each(localCart.items, function (indexInArray, valueOfElement) { 
+        addToCart(valueOfElement.id);
+   });
+   localStorage.removeItem('productsInCart');   
+   console.log("done");
+   
+}
+    </script>
+@endauth
 @guest
 <script>
      function getProd(id) {   
         return fetch('/productcart/'+id).then(resp=>resp.json()).then(data=>data);
      }
-     getProd(1).then(da=>{
-         console.log(da);
-         
-     });
      function cartSum() {
          let total = 0 ;
          let cart = JSON.parse(localStorage['productsInCart']);
@@ -348,8 +357,6 @@
             product = data[0];
             detail = data[1];
             image = data[2];
-        console.log(product.price);
-
         var items = {
     "id": id ,
     "image":image.image,

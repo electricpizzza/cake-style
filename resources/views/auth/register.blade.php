@@ -17,7 +17,7 @@
         
         <div class="checkout_area section-padding-80 col-8">
             
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" onsubmit="authCart(this)">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
