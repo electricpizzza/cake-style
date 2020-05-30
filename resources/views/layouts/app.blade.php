@@ -206,10 +206,9 @@
 
                 <h2>Summary</h2>
                 <ul class="summary-table">
-                    <li><span>subtotal:</span> <span></span></li>
-                    <li><span>delivery:</span> <span> </span></li>
-                    <li><span>discount:</span> <span>-</span></li>
-                    <li><span>total:</span> <span></span></li>
+                    <li><span>subtotal:</span> <span id="subtotalguest"></span></li>
+                    <li><span>delivery:</span> <span>FREE</span></li>
+                    <li><span>total:</span> <span id="totalguest"></span></li>
                 </ul>
                 <div class="checkout-btn mt-100">
                     <a href="/" class="btn essence-btn">Start Shopping</a>
@@ -311,8 +310,16 @@
          console.log(da);
          
      });
+     function cartSum() {
+         let total = 0 ;
+         let cart = JSON.parse(localStorage['productsInCart']);
 
-   
+        $.each(cart.items, function (indexInArray, valueOfElement) { 
+             total+=parseInt(valueOfElement.price);
+        });
+        $("#totalguest").html(total+' DHs');        
+        $("#subtotalguest").html(total+' DHs');        
+     }
    function removefromcart(id) {
     let cart = JSON.parse(localStorage['productsInCart']);
     $(`#cartitem${id}`).remove();
@@ -334,6 +341,7 @@
         $(this).html("");
         });
          }   
+     cartSum();
      }
      function addToCart(id) { 
         getProd(id).then(data=>{
@@ -380,14 +388,13 @@ const cartitem = ` <div class="single-cart-item" id="cartitem${id}">
                     <a href="/product/${product.id}"> <h6>${product.title}</h6></a>
                     <p class="size">Size: NaN</p>
                     <p class="color">Color: NaN</p>
-                    <p class="price">${product.price}dd DHs</p>
+                    <p class="price">${product.price}DHs</p>
                 </div>
             </div>
         </div>`;
 
-
-
-$("#gestCart").append(cartitem);
+        cartSum();
+        $("#gestCart").append(cartitem);
      });
 }
 
@@ -419,6 +426,7 @@ $("#gestCart").append(cartitem);
                 </div>`;
         if (element!='') 
         $("#gestCart").append(cartitem);
+        cartSum();
     });
      });
      
