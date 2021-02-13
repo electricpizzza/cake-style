@@ -8,15 +8,7 @@ class Product extends Model
 {
 
     protected $fillable = [
-        "title",
-        "category_id" ,
-        "price" ,
-        "quantity" ,
-        "brand" ,
-        "description" ,
-        "available" ,
-        "sale" ,
-        "showen_as" ,
+        "title","category_id" ,"price" ,"quantity" ,"brand" ,"description" ,"available" ,"sale" ,"showen_as" ,
     ];
 
     public function detail()
