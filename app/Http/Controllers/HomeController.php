@@ -29,8 +29,8 @@ class HomeController extends Controller
             $sales = Order::select(
                 Order::raw('sum(amount) as sales'), 
                 Order::raw('count(*) as orders'), 
-                Order::raw("DATE_TRUNC('year' , created_at) as year"),
-                Order::raw("DATE_TRUNC('month', created_at) AS month")
+                Order::raw("DATE_FORMAT(created_at ,'%Y-01-01') as year"),
+                Order::raw("DATE_FORMAT(created_at ,'2023-%m-01')  AS month")
             )->groupby('year','month')->get();
             return view('dashboard.home',compact('sales'));
         }

@@ -7,7 +7,7 @@
     <div class="single_product_thumb clearfix">
         <div class="product_thumbnail_slides owl-carousel">
             @foreach ($product->images as $image)
-            <img src="{{ $image->image }}" alt="">
+            <img src="{{ asset('storage')}}/{{$image->image}}" alt="">
             @endforeach
         </div>
     </div>

@@ -66,9 +66,8 @@ class AdminProductController extends Controller
             "image2" => "",
             "image3" => "",
         ]);
-        
         $tags = explode(",",$data["tag"]);
-
+        
         $product = Product::create([
             "title" => $data["title"],
             "category_id" => $data["category"],
@@ -80,6 +79,7 @@ class AdminProductController extends Controller
             "sale" => $data["sale"],
             "available" => $data["quantity"],
         ]);
+
         $colors ="";
         for ($i=0; $i < count($data["color"])-1; $i++) { 
             $colors.=$data["color"][$i].',';

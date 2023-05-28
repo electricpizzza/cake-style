@@ -59,7 +59,7 @@
                                             <td>
                                                 <a href="/product/{{$product->id}}" class="media">
                                                     <div class="d-flex">
-                                                        <img src="{{$product->images->first()->image}}" class="h-100" width="100px" height="200px" alt="">
+                                                        <img src="{{ asset('storage')}}/{{$product->images[0]->image}}" class="h-100" width="100px" height="200px" alt="">
                                                     </div>
                                                     <div class="media-body p-3">
                                                         <h5>{{$product->title}}</h5>
